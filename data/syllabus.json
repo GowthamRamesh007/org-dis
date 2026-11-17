@@ -1,0 +1,87 @@
+{
+  "subject_code": "CW3551",
+  "subject_name": "Data and Information Security",
+  "department": "B.Tech - Artificial Intelligence and Data Science / CS&BS",
+  "regulation": "Anna University CBCS - Semester V",
+  "textbook": "Data and Information Security by Vilas S. Bagad & Iresh A. Dhotre (Technical Publications)",
+  "units": [
+    {
+      "unit": "UNIT I",
+      "title": "INTRODUCTION",
+      "topics": [
+        "History of Information Security",
+        "What is Information Security?",
+        "Critical Characteristics of Information",
+        "NSTISSC Security Model (McCumber Cube)",
+        "Components of an Information System",
+        "Securing the Components",
+        "Balancing Security and Access",
+        "The Systems Development Life Cycle (SDLC)",
+        "The Security Systems Development Life Cycle (SecSDLC)"
+      ],
+      "textbook_chapter": "Chapter 1 (Pages 1-1 to 1-18)"
+    },
+    {
+      "unit": "UNIT II",
+      "title": "SECURITY INVESTIGATION",
+      "topics": [
+        "Need for Security",
+        "Business Needs of Information Security",
+        "Threats and Attacks (Deliberate Software Attacks, Quality of Service Deviations)",
+        "Legal, Ethical and Professional Issues in Computer Security",
+        "An Overview of Computer Security",
+        "Access Control Matrix (ACM)",
+        "Policy - Security Policies",
+        "Confidentiality Policies (Bell-LaPadula)",
+        "Integrity Policies (Biba, Clark-Wilson)",
+        "Hybrid Policies (Chinese Wall / Brewer-Nash)"
+      ],
+      "textbook_chapter": "Chapter 2 (Pages 2-1 to 2-22)"
+    },
+    {
+      "unit": "UNIT III",
+      "title": "DIGITAL SIGNATURE AND AUTHENTICATION",
+      "topics": [
+        "Digital Signature Schemes and their Variants (Direct and Arbitrated Digital Signatures)",
+        "Digital Signature Standards (DSS / DSA)",
+        "Authentication Protocols (One-Way, Mutual Authentication, Shared Secret, Public Key)",
+        "Authentication Requirements and Functions (MAC, Hash Functions, SHA-512, HMAC, CMAC)",
+        "Entity Authentication and Challenge-Response",
+        "Authentication Applications - Kerberos (V4 & V5, Realms, Tickets)",
+        "X.509 Directory Authentication Services and Public Key Certificates"
+      ],
+      "textbook_chapter": "Chapter 3 (Pages 3-1 to 3-78)"
+    },
+    {
+      "unit": "UNIT IV",
+      "title": "E-MAIL AND IP SECURITY",
+      "topics": [
+        "Electronic Mail Security",
+        "Pretty Good Privacy (PGP) - Operation, Key Rings, Message Formats, PGP Generation & Reception",
+        "PGP Concept of Trust and Trust Processing",
+        "S/MIME (MIME headers, functionality, cryptographic algorithms, certificates)",
+        "IP Security Overview and Architecture",
+        "Encapsulating Security Payload (ESP) and Authentication Header (AH) Protocols",
+        "IPSec Modes (Transport Mode vs. Tunnel Mode)",
+        "Security Association (SA), SA Parameters and Combining SAs",
+        "Key Management (Oakley, ISAKMP, IKE)"
+      ],
+      "textbook_chapter": "Chapter 4 (Pages 4-1 to 4-46)"
+    },
+    {
+      "unit": "UNIT V",
+      "title": "WEB SECURITY",
+      "topics": [
+        "Web Security Overview and Requirements",
+        "Secure Sockets Layer (SSL) - Objectives, Architecture and Protocol Stack",
+        "SSL Record Protocol and SSL Handshake Protocol",
+        "SSL Secure Communication (Alert and Change Cipher Spec Protocols)",
+        "Transport Layer Security (TLS) - Working and Comparison with SSL",
+        "Secure Electronic Transaction (SET) - Objectives, Participants and Entities",
+        "Dual Signature - Concept, Generation and Verification",
+        "SET Transaction Processing (Purchase Request, Payment Authorization, Payment Capture)"
+      ],
+      "textbook_chapter": "Chapter 5 (Pages 5-1 to 5-24)"
+    }
+  ]
+}

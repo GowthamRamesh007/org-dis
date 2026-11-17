@@ -1,0 +1,417 @@
+[
+  {
+    "id": "2M-Q01",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 1,
+    "topic": "Information Security & CIA Triad",
+    "question": "Define Information Security.",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "Information Security",
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Safeguard"
+    ],
+    "syllabus_ref": "Chapter 1 (Page 1-3, 1-16)",
+    "exam_answer": {
+      "definition": "Information Security (InfoSec) is defined as the protection of information and its critical elements (systems and hardware that use, store, and transmit that information) from unauthorized access, disclosure, disruption, modification, inspection, recording, or destruction.",
+      "core_objective": "To preserve the Confidentiality, Integrity, and Availability (CIA Triad) of information assets through the application of policy, education, and technology."
+    },
+    "simple_explanation": {
+      "meaning": "Information Security means putting strong locks on your secret diary, making sure nobody tears the pages or scribbles on them, and knowing exactly where the diary is whenever you want to read it!"
+    }
+  },
+  {
+    "id": "2M-Q02",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 2,
+    "topic": "Information Security & CIA Triad",
+    "question": "What is the CIA Triad? State its components.",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "CIA Triad",
+      "Confidentiality",
+      "Integrity",
+      "Availability"
+    ],
+    "syllabus_ref": "Chapter 1 (Pages 1-5 to 1-7)",
+    "exam_answer": {
+      "definition": "The CIA Triad is the foundational security benchmark model representing three core principles:",
+      "components": [
+        "1. Confidentiality: Restricting access to sensitive information solely to authorized entities, preventing unauthorized disclosure.",
+        "2. Integrity: Guarding against improper information modification or destruction, ensuring data accuracy and authenticity.",
+        "3. Availability: Ensuring timely, reliable, and uninterrupted access to information and resources for authorized users."
+      ]
+    },
+    "simple_explanation": {
+      "meaning": "Think of CIA as three rules for your toy box: C = Keep it secret (no peeking), I = Keep it safe (don't break it), and A = Keep it ready (you can play anytime you want)."
+    }
+  },
+  {
+    "id": "2M-Q03",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 3,
+    "topic": "NSTISSC Security Model",
+    "question": "What is the NSTISSC Security Model (McCumber Cube)?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "NSTISSC",
+      "McCumber Cube",
+      "3x3x3",
+      "27 cells"
+    ],
+    "syllabus_ref": "Chapter 1 (Pages 1-8 to 1-9)",
+    "exam_answer": {
+      "definition": "The NSTISSC (National Security Telecommunications and Information Systems Security Committee) model, developed by John McCumber, is a 3-dimensional 3x3x3 framework comprising 27 cells.",
+      "dimensions": [
+        "Information Goals: Confidentiality, Integrity, Availability.",
+        "Information States: Storage (at Rest), Processing (in Use), Transmission (in Transit).",
+        "Countermeasures: Policy, Education/Training, Technology."
+      ]
+    },
+    "simple_explanation": {
+      "meaning": "It's like a 3D Rubik's cube with 27 tiny blocks showing all the ways you need to guard a toy: using good rules, good training, and strong locks across every room!"
+    }
+  },
+  {
+    "id": "2M-Q04",
+    "unit": "UNIT II",
+    "unit_title": "SECURITY INVESTIGATION",
+    "question_number": 4,
+    "topic": "Threat, Attack, Vulnerability",
+    "question": "Differentiate between a Threat, an Attack, and a Vulnerability.",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "Threat",
+      "Attack",
+      "Vulnerability",
+      "Exploit"
+    ],
+    "syllabus_ref": "Chapter 2 (Pages 2-3 to 2-6)",
+    "exam_answer": {
+      "definitions": [
+        "Vulnerability: A flaw, loophole, or weakness in a system's design, implementation, or operational procedures (e.g., an unpatched bug or open door).",
+        "Threat: Any potential danger or event that could exploit a vulnerability to cause loss or destruction of an asset (e.g., a burglar or malware).",
+        "Attack: An active or deliberate action undertaken by a threat agent to exploit a vulnerability and compromise security."
+      ]
+    },
+    "simple_explanation": {
+      "meaning": "Vulnerability is leaving your house window wide open. Threat is a rainstorm outside. Attack is the rain actually pouring in through that open window and soaking your bed!"
+    }
+  },
+  {
+    "id": "2M-Q05",
+    "unit": "UNIT II",
+    "unit_title": "SECURITY INVESTIGATION",
+    "question_number": 5,
+    "topic": "Access Control Matrix",
+    "question": "What is an Access Control Matrix (ACM)?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "Access Control Matrix",
+      "Subjects",
+      "Objects",
+      "Rights"
+    ],
+    "syllabus_ref": "Chapter 2 (Pages 2-13 to 2-15)",
+    "exam_answer": {
+      "definition": "An Access Control Matrix (ACM) is an abstract mathematical table M[S, O] that defines authorized privileges in a computer system. The rows represent Subjects (active entities like users/processes), the columns represent Objects (passive assets like files/sockets), and each cell specifies the access rights (Read, Write, Execute, Delete)."
+    },
+    "simple_explanation": {
+      "meaning": "A big classroom chart on the wall that shows who is allowed to touch what: Bob can read the book, Alice can draw on the blackboard, and nobody is allowed to open the teacher's drawer!"
+    }
+  },
+  {
+    "id": "2M-Q06",
+    "unit": "UNIT III",
+    "unit_title": "DIGITAL SIGNATURE AND AUTHENTICATION",
+    "question_number": 6,
+    "topic": "Digital Signature",
+    "question": "What is a Digital Signature? State its key properties.",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "Digital Signature",
+      "Authenticity",
+      "Integrity",
+      "Non-repudiation"
+    ],
+    "syllabus_ref": "Chapter 3 (Pages 3-2 to 3-4)",
+    "exam_answer": {
+      "definition": "A digital signature is a mathematical cryptographic scheme for demonstrating the authenticity of digital messages or documents. It is produced by encrypting a message digest with the sender's private key.",
+      "properties": "Guarantees Sender Authentication, Message Integrity, and Non-Repudiation (the sender cannot dispute generating the message)."
+    },
+    "simple_explanation": {
+      "meaning": "It's like an uncrackable royal wax seal stamped onto an email using your private golden stamp. Everyone can look at it to prove you wrote it, and nobody can fake it!"
+    }
+  },
+  {
+    "id": "2M-Q07",
+    "unit": "UNIT III",
+    "unit_title": "DIGITAL SIGNATURE AND AUTHENTICATION",
+    "question_number": 7,
+    "topic": "Digital Signature Standard (DSS)",
+    "question": "What is Digital Signature Standard (DSS)?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "DSS",
+      "DSA",
+      "FIPS 186",
+      "NIST"
+    ],
+    "syllabus_ref": "Chapter 3 (Pages 3-4 to 3-7)",
+    "exam_answer": {
+      "definition": "DSS (Digital Signature Standard) is the official US Federal standard (FIPS PUB 186) established by NIST. It specifies the Digital Signature Algorithm (DSA), which uses discrete logarithms to generate compact 320-bit signatures (r, s) strictly for signing and verification without general-purpose encryption."
+    },
+    "simple_explanation": {
+      "meaning": "The official government recipe for making tiny, super-fast digital signatures on files so you know they are genuine."
+    }
+  },
+  {
+    "id": "2M-Q08",
+    "unit": "UNIT III",
+    "unit_title": "DIGITAL SIGNATURE AND AUTHENTICATION",
+    "question_number": 8,
+    "topic": "Kerberos",
+    "question": "What is Kerberos? Name its key architectural components.",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "Kerberos",
+      "KDC",
+      "AS",
+      "TGS",
+      "Single Sign-On"
+    ],
+    "syllabus_ref": "Chapter 3 (Pages 3-47 to 3-50)",
+    "exam_answer": {
+      "definition": "Kerberos is a centralized third-party symmetric-key authentication service developed at MIT that provides secure Single Sign-On (SSO) across untrusted networks.",
+      "components": [
+        "Authentication Server (AS): Authenticates user credentials and issues Ticket Granting Tickets (TGT).",
+        "Ticket Granting Server (TGS): Issues Service Tickets for target application servers.",
+        "Client & Application Servers: Workstations and enterprise resource hosts."
+      ]
+    },
+    "simple_explanation": {
+      "meaning": "Kerberos is the ticket booth at an amusement park. You show your ID once at the gate, get a wristband, and ride all the rollercoasters all day without showing your passport again!"
+    }
+  },
+  {
+    "id": "2M-Q09",
+    "unit": "UNIT III",
+    "unit_title": "DIGITAL SIGNATURE AND AUTHENTICATION",
+    "question_number": 9,
+    "topic": "X.509 Certificates",
+    "question": "What is an X.509 Certificate?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "X.509",
+      "Certificate Authority",
+      "Public Key",
+      "Digital Certificate"
+    ],
+    "syllabus_ref": "Chapter 3 (Pages 3-67 to 3-70)",
+    "exam_answer": {
+      "definition": "An X.509 Certificate is an ITU-T standard digital identity document that securely binds an entity's identity (domain, organization, or user) to their public cryptographic key via the digital signature of a trusted Certificate Authority (CA)."
+    },
+    "simple_explanation": {
+      "meaning": "Your computer's official passport issued by the Government (Certificate Authority) that proves your computer is really who it says it is!"
+    }
+  },
+  {
+    "id": "2M-Q10",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 10,
+    "topic": "PGP (Pretty Good Privacy)",
+    "question": "What is PGP and what services does it provide for e-mail?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "PGP",
+      "Phil Zimmermann",
+      "Confidentiality",
+      "Authentication",
+      "Compression",
+      "Radix-64"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-2 to 4-4)",
+    "exam_answer": {
+      "definition": "Pretty Good Privacy (PGP) is a popular hybrid cryptographic protocol developed by Phil Zimmermann for securing email and file storage.",
+      "services": "Provides five primary services: 1. Digital Signature Authentication, 2. Message Confidentiality (Symmetric session encryption), 3. ZIP Compression, 4. Radix-64 ASCII Armor conversion, and 5. Message Segmentation/Reassembly."
+    },
+    "simple_explanation": {
+      "meaning": "A super-smart email toolbox that stamps your email, squeezes it small, locks it in a titanium box, and mails it safely."
+    }
+  },
+  {
+    "id": "2M-Q11",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 11,
+    "topic": "S/MIME",
+    "question": "What is S/MIME and how does it differ from traditional MIME?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "S/MIME",
+      "MIME",
+      "EnvelopedData",
+      "SignedData",
+      "PKCS#7"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-16 to 4-18)",
+    "exam_answer": {
+      "definition": "Secure/Multipurpose Internet Mail Extensions (S/MIME) is an IETF industry standard (RFC 5751) providing authentication, message integrity, non-repudiation, and privacy for electronic messages.",
+      "difference": "MIME only defines formats for multi-part multimedia body content (images, audio, PDF) without security. S/MIME introduces cryptographic envelopes (EnvelopedData, SignedData) backed by X.509 PKI certificates."
+    },
+    "simple_explanation": {
+      "meaning": "MIME lets emails send photos and attachments. S/MIME locks those photos in tamper-proof diplomatic envelopes signed by trusted certificate authorities."
+    }
+  },
+  {
+    "id": "2M-Q12",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 12,
+    "topic": "IPSec",
+    "question": "What is IPSec and at which OSI layer does it operate?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "IPSec",
+      "Network Layer",
+      "Layer 3",
+      "RFC 4301",
+      "VPN"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-25 to 4-27)",
+    "exam_answer": {
+      "definition": "Internet Protocol Security (IPSec) is an open suite of protocols (RFC 4301) providing cryptographic security services (data origin authentication, integrity, confidentiality, and anti-replay protection) at the Network Layer (Layer 3 of the OSI model).",
+      "advantage": "Because it operates at Layer 3, it transparently secures all transport and application layer traffic (TCP, UDP, HTTP, VoIP) without application changes."
+    },
+    "simple_explanation": {
+      "meaning": "IPSec is an armored tunnel under the entire internet highway. Every single vehicle that drives into the tunnel is instantly protected without needing its own guards!"
+    }
+  },
+  {
+    "id": "2M-Q13",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 13,
+    "topic": "ESP and AH Protocols",
+    "question": "Differentiate between ESP and AH in IPSec.",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "ESP",
+      "AH",
+      "Protocol 50",
+      "Protocol 51",
+      "Confidentiality"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-34 to 4-37)",
+    "exam_answer": {
+      "comparison": [
+        "Authentication Header (AH - Protocol 51): Provides data origin authentication, data integrity, and anti-replay protection. AH DOES NOT provide confidentiality (no encryption).",
+        "Encapsulating Security Payload (ESP - Protocol 50): Provides confidentiality (symmetric encryption), along with data integrity, authentication, and anti-replay protection."
+      ]
+    },
+    "simple_explanation": {
+      "meaning": "AH is a clear glass box with a wax seal (everyone can see inside, but nobody can touch). ESP is a solid black steel safe (nobody can see inside AND nobody can touch)!"
+    }
+  },
+  {
+    "id": "2M-Q14",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 14,
+    "topic": "SSL (Secure Sockets Layer)",
+    "question": "What is SSL and what are its sub-protocols?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "SSL",
+      "Record Protocol",
+      "Handshake Protocol",
+      "Alert Protocol",
+      "Change Cipher Spec"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-10 to 5-13)",
+    "exam_answer": {
+      "definition": "Secure Sockets Layer (SSL) is a transport-level security framework pioneered by Netscape to secure web transactions over TCP.",
+      "sub_protocols": [
+        "1. SSL Record Protocol (confidentiality and integrity framing)",
+        "2. SSL Handshake Protocol (negotiates keys, algorithms, and certificates)",
+        "3. SSL Change Cipher Spec Protocol (switches to agreed cipher suite)",
+        "4. SSL Alert Protocol (communicates error and closure signals)"
+      ]
+    },
+    "simple_explanation": {
+      "meaning": "SSL is the system that puts the lock icon in your browser so you can safely buy things online without thieves stealing your credit card."
+    }
+  },
+  {
+    "id": "2M-Q15",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 15,
+    "topic": "TLS (Transport Layer Security)",
+    "question": "What is TLS and how is it related to SSL?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "TLS",
+      "IETF",
+      "RFC 5246",
+      "RFC 8446",
+      "SSL 3.0 successor"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-4 to 5-6, 5-14)",
+    "exam_answer": {
+      "definition": "Transport Layer Security (TLS) is an IETF open standard (RFC 2246, 5246, 8446) and the direct cryptographic successor to Netscape's SSL 3.0.",
+      "relation": "TLS fixes critical security vulnerabilities of SSL (e.g., POODLE attack), replaces ad-hoc digests with standardized HMAC-SHA PRFs, and in modern TLS 1.3 provides 1-RTT handshakes and Perfect Forward Secrecy."
+    },
+    "simple_explanation": {
+      "meaning": "TLS is the modern, upgraded version of SSL. It's twice as fast and mathematically unhackable compared to the old 1990s SSL."
+    }
+  },
+  {
+    "id": "2M-Q16",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 16,
+    "topic": "SET (Secure Electronic Transaction)",
+    "question": "What is SET and what is the purpose of Dual Signature in SET?",
+    "marks": "2 Marks",
+    "type": "2-Mark Question",
+    "keywords": [
+      "SET",
+      "Dual Signature",
+      "Cardholder",
+      "Merchant",
+      "Payment Gateway",
+      "PI",
+      "OI"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-14 to 5-17)",
+    "exam_answer": {
+      "definition": "Secure Electronic Transaction (SET) is a payment protocol developed by Visa and MasterCard for secure credit card commerce.",
+      "dual_signature": "Dual Signature cryptographically links two messages\u2014Order Information (OI for merchant) and Payment Information (PI for bank)\u2014by signing the hash of both digests: DS = E(PRc, H(H(OI) || H(PI))). This allows the merchant to process orders without seeing card numbers, and the bank to process charges without seeing cart items."
+    },
+    "simple_explanation": {
+      "meaning": "A clever two-sided stamp that lets the pizza store get your pizza order without seeing your credit card digits, and lets the bank charge your card without knowing what toppings you bought!"
+    }
+  }
+]

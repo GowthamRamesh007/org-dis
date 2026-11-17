@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CW3551 Data and Information Security | Anna University Exam Prep</title>
+  <meta name="description" content="Premium responsive exam preparation web app for CW3551 Data and Information Security with syllabus-oriented exam answers and ELI3 explanations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo-group" onclick="selectUnitFilter('ALL')">
+        <div class="logo-badge">🛡️</div>
+        <div class="logo-text">
+          <h1>CW3551 Data & Information Security</h1>
+          <p>Anna University CBCS Exam Mastery • B.Tech AI&DS / CS&BS</p>
+        </div>
+      </div>
+
+      <div class="header-nav">
+        <div class="header-progress" title="Your overall study completion">
+          <div class="progress-bar-mini">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+          <span class="progress-text" id="progressText">0% Done</span>
+        </div>
+
+        <button class="nav-btn" onclick="openSyllabusModal()">
+          <span>📖 Official Syllabus</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="hero-meta">
+        <span class="meta-pill">Regulation 2021 CBCS</span>
+        <span class="meta-pill alt">Technical Publications • Bagad & Dhotre</span>
+        <span class="meta-pill">36 Master Questions</span>
+      </div>
+      <h2 class="hero-title">Prepare with Precision & Absolute Clarity</h2>
+      <p class="hero-desc">
+        Strictly compiled from the official scanned textbook syllabus. Every question from the university question bank includes a full <strong>Anna University Exam Answer</strong> with structural diagrams, algorithms, and point-wise definitions, paired with an <strong>Explain Like I'm 3</strong> intuitive analogy.
+      </p>
+
+      <!-- Quick Search Bar -->
+      <div class="search-box-wrapper">
+        <div class="search-input-group">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search topics, protocols (e.g. Kerberos, ESP, PGP, McCumber Cube)...">
+        </div>
+      </div>
+    </section>
+
+    <!-- Five Unit Cards Dashboard -->
+    <div class="section-header">
+      <div class="section-title">
+        <span>🏛️ The Five Core Units</span>
+      </div>
+    </div>
+
+    <div class="units-grid" id="unitsGrid">
+      <!-- Unit Cards dynamically generated from syllabus.json -->
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="ALL">All Questions (36)</button>
+      <button class="filter-btn" data-filter="UNIT I">Unit I: Introduction</button>
+      <button class="filter-btn" data-filter="UNIT II">Unit II: Investigation</button>
+      <button class="filter-btn" data-filter="UNIT III">Unit III: Digital Signature</button>
+      <button class="filter-btn" data-filter="UNIT IV">Unit IV: Email & IP Sec</button>
+      <button class="filter-btn" data-filter="UNIT V">Unit V: Web Security</button>
+      <button class="filter-btn" data-filter="2MARKS">2-Mark Questions (16)</button>
+      <button class="filter-btn" data-filter="BOOKMARKS">★ Bookmarked</button>
+      <button class="filter-btn" data-filter="COMPLETED">✓ Completed</button>
+    </div>
+
+    <!-- Main Content Workspace (Split Layout) -->
+    <div class="content-layout">
+      <!-- Left: Questions List Sidebar -->
+      <aside class="questions-list-panel">
+        <div class="questions-list-header">
+          <h3>Questions Navigator</h3>
+        </div>
+        <div id="questionsList">
+          <!-- Populated from local JSON -->
+        </div>
+      </aside>
+
+      <!-- Right: Question Detail & Two-Tab Answer Panel -->
+      <section class="detail-card" id="questionDetail">
+        <!-- Rendered by app.js -->
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Official Syllabus Modal -->
+  <div class="modal-overlay" id="syllabusModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Official Prescribed Syllabus (CW3551)</h3>
+        <button class="modal-close-btn" onclick="closeSyllabusModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="syllabusModalBody">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <strong>CW3551 Data and Information Security Exam Preparation Suite</strong>
+        <p>Built with strictly extracted textbook curriculum and 100% pre-compiled local JSON data storage.</p>
+      </div>
+      <div>
+        <span>Anna University Regulation • AI&DS / CS&BS Department</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

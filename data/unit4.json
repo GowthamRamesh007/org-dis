@@ -1,0 +1,345 @@
+[
+  {
+    "id": "U4-Q1",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 1,
+    "question": "Explain PGP architecture and its operation.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "PGP",
+      "Pretty Good Privacy",
+      "Phil Zimmermann",
+      "Authentication",
+      "Confidentiality",
+      "Compression",
+      "Radix-64",
+      "ZIP",
+      "Key Rings",
+      "Session Key",
+      "Trust Model"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-2 to 4-15)",
+    "exam_answer": {
+      "introduction": "Pretty Good Privacy (PGP), designed by Phil Zimmermann in 1991, is an open-source, highly versatile hybrid cryptographic application providing confidentiality, authentication, integrity, and non-repudiation for electronic mail and file storage.",
+      "the_five_operational_services": [
+        {
+          "service": "1. Authentication (Digital Signature)",
+          "steps": [
+            "Sender creates message M and generates SHA-1/SHA-256 hash H(M).",
+            "Sender encrypts hash using their own private key (RSA or DSA) to form signature S.",
+            "Signature S is prepended to message M: [S || M]."
+          ]
+        },
+        {
+          "service": "2. Confidentiality (Encryption)",
+          "steps": [
+            "Sender generates a one-time random 128-bit symmetric session key Ks (CAST-128, IDEA, or 3DES).",
+            "The message (or signed message) is encrypted with session key Ks.",
+            "Session key Ks is encrypted with the recipient's public key (RSA or ElGamal).",
+            "Encrypted session key is prepended to the ciphertext message: [E(PUb, Ks) || E(Ks, M)]."
+          ]
+        },
+        {
+          "service": "3. Compression (ZIP / Deflate)",
+          "details": [
+            "PGP compresses the message using ZIP after signing, but BEFORE encryption.",
+            "Signing before compression preserves signature portability across different zip engines.",
+            "Encrypting after compression significantly reduces ciphertext redundancy, defeating frequency-analysis cryptanalysis."
+          ]
+        },
+        {
+          "service": "4. E-Mail Compatibility (Radix-64 / ASCII Armor)",
+          "details": [
+            "Standard SMTP mail relays handle only 7-bit ASCII characters (values 0 to 127). Raw binary ciphertext causes corruption.",
+            "PGP encodes encrypted/compressed blocks into printable ASCII characters using Radix-64 (Base64), appending CRC checksums."
+          ]
+        },
+        {
+          "service": "5. Segmentation and Reassembly",
+          "details": [
+            "Many email systems impose strict message size limits (e.g., 50 KB in legacy systems).",
+            "PGP automatically splits oversized messages into compliant smaller segments and reassembles them at the recipient terminal."
+          ]
+        }
+      ],
+      "key_rings_concept": [
+        "Private Key Ring: Contains the user's own public/private key pairs, encrypted under a passphrase-derived symmetric hash (SHA-1).",
+        "Public Key Ring: Stores public keys of external correspondents, accompanied by Key Legitimacy fields, Signature Trust fields, and Owner Trust ratings."
+      ],
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |             PGP MESSAGE TRANSMISSION OPERATION              |\n   +-------------------------------------------------------------+\n     SENDER (Alice)                                              \n     [Message M] ---> [ Hash ] ---> [ Encrypt w/ PRa ] ---> [Sig S]\n          |                                                    |\n          +----------------------------------------------------+ \n          | (Message M + Signature S)\n          v\n     [ ZIP Compression ]\n          |\n          v\n     [ Encrypt with Session Key Ks ] -------------> [ Ciphertext C ]\n          |\n     Session Key Ks ---> [ Encrypt w/ PUb ] ------> [ Encrypted Ks ]\n                                                          |\n     [ Encrypted Ks || Ciphertext C ]                     |\n          |\n          v\n     [ Radix-64 ASCII Armor Conversion ]\n          |\n          v\n     ===> TRANSMIT OVER UNTRUSTED INTERNET (SMTP) ===>",
+      "pgp_trust_model": "Unlike centralized X.509 hierarchies, PGP employs a decentralized 'Web of Trust' (WoT). Users personally vouch for and sign each other's public keys, calculating key legitimacy based on direct introduction and trusted introducers.",
+      "conclusion": "PGP integrates symmetric encryption (speed), asymmetric encryption (convenient key distribution), hashing (integrity), and compression (bandwidth efficiency) into a cohesive, secure email standard."
+    },
+    "simple_explanation": {
+      "analogy_title": "Sending a Secret Letter in a Double Lockbox with Postal Stamps",
+      "analogy_story": "Imagine writing a confidential letter to your friend using PGP:",
+      "points": [
+        {
+          "feature": "1. Wax Stamp (Authentication)",
+          "meaning": "You write the letter and put your personal wax stamp at the bottom so your friend knows it really came from you."
+        },
+        {
+          "feature": "2. Squeezing the Paper (Compression)",
+          "meaning": "You fold the paper tightly into a tiny square. It takes up less space and scrambles repeating word patterns so spies can't guess words!"
+        },
+        {
+          "feature": "3. The Double Lockbox (Confidentiality)",
+          "meaning": "You put the letter in a titanium lockbox with a fast combination lock (Ks). Then you put that combination inside a small envelope and lock it with your friend's personal key (PUb). Only your friend can open it!"
+        },
+        {
+          "feature": "4. Postal Friendly Envelope (Radix-64)",
+          "meaning": "Post offices don't allow weird gooey materials. You pack everything inside a standard crisp white cardboard envelope with clear printed letters so any mail truck can deliver it!"
+        }
+      ],
+      "takeaway": "PGP stamps your letter, squishes it, locks it tight, and puts it in a clean envelope so only your friend can open it!"
+    }
+  },
+  {
+    "id": "U4-Q2",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 2,
+    "question": "Explain S/MIME and its applications in e-mail security.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "S/MIME",
+      "MIME",
+      "RFC 822",
+      "Content-Type",
+      "EnvelopedData",
+      "SignedData",
+      "Clear-SignedData",
+      "CompressedData",
+      "X.509 Certificates",
+      "Enterprise Email"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-16 to 4-24)",
+    "exam_answer": {
+      "introduction": "Secure/Multipurpose Internet Mail Extensions (S/MIME) is an IETF industry standard (RFC 5751, RFC 8551) for public key encryption and signing of MIME data. While traditional RFC 822 mail is restricted to 7-bit ASCII text, MIME enables arbitrary attachments (images, audio, PDF). S/MIME overlays enterprise-grade cryptographic security directly into modern email clients (Microsoft Outlook, Apple Mail).",
+      "mime_enhancement": [
+        "MIME-Version: Specifies MIME specification compliance (e.g., 1.0).",
+        "Content-Type: Describes the media type and subtype (e.g., text/html, application/pkcs7-mime).",
+        "Content-Transfer-Encoding: Encoding method applied (7bit, 8bit, binary, quoted-printable, base64).",
+        "Content-Disposition: Presentation hints (inline or attachment; filename=...)."
+      ],
+      "smime_content_types": [
+        {
+          "type": "1. EnvelopedData",
+          "description": "Provides confidentiality. Consists of encrypted content of any type and encrypted content-encryption keys for one or more recipients (AES-256 or 3DES encrypted with recipients' RSA/ECC public keys)."
+        },
+        {
+          "type": "2. SignedData",
+          "description": "Provides authentication and integrity. Message digest is computed, encrypted with signer's private key, and bundled together with the content in a single Base64-encoded package."
+        },
+        {
+          "type": "3. Clear-SignedData (multipart/signed)",
+          "description": "Provides signature verification while keeping the original email body in plain clear text. Recipients without S/MIME capability can still read the plain message, while S/MIME clients verify the detached cryptographic signature."
+        },
+        {
+          "type": "4. CompressedData",
+          "description": "Applies ZLIB compression algorithms to minimize payload size prior to transmission."
+        }
+      ],
+      "cryptographic_algorithms_supported": [
+        "Digest / Hash: SHA-256, SHA-384, SHA-512 (SHA-1 deprecated).",
+        "Digital Signature: RSA (2048/4096-bit), ECDSA.",
+        "Content Encryption: AES-128, AES-256 (CBC and GCM modes).",
+        "Key Encryption / Key Agreement: RSA-OAEP, Diffie-Hellman / ECDH."
+      ],
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |                  S/MIME ENVELOPEDDATA ARCHITECTURE          |\n   +-------------------------------------------------------------+\n     Content Body M ----------------------------------+\n                                                      |\n     Generate Symmetric Key Ks (AES-256)              |\n           |                                          v\n           +-----------------------------> [ Encrypt Content M ]\n           |                                          |\n           v                                          v\n     [ Encrypt Ks with Recipient 1 PU1 ]       [ Ciphertext Data ]\n     [ Encrypt Ks with Recipient 2 PU2 ]              |\n           |                                          |\n           v                                          v\n     +-----------------------------------------------------------+\n     | S/MIME EnvelopedData MIME Entity                          |\n     | Headers: Content-Type: application/pkcs7-mime              |\n     | Body: [ RecipientInfo List (PU-encrypted Ks) || Ciphertext]|\n     +-----------------------------------------------------------+",
+      "smime_vs_pgp_comparison": "| Feature | S/MIME | PGP / OpenPGP |\n| :--- | :--- | :--- |\n| Trust Model | Hierarchical PKI with X.509 CAs | Decentralized Web of Trust (WoT) |\n| Native Client Integration | Built natively into Outlook, Apple Mail, iOS | Usually requires plugins / external apps |\n| Key Management | Centralized corporate IT issuance | User-driven decentralized keys |\n| Target Environment | Large enterprises, government, defense | Privacy enthusiasts, grassroots, tech power users |",
+      "applications": [
+        "Corporate and government confidential executive communication.",
+        "Automated e-invoicing and purchase order validation with legally binding digital signatures.",
+        "Protection against CEO fraud, spear-phishing, and email spoofing through verified CA badges in Outlook."
+      ],
+      "conclusion": "S/MIME is the gold standard for institutional email security, leveraging trusted hierarchical Certificate Authorities to guarantee corporate email authenticity and privacy."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Certified Diplomatic Pouch for School Teachers",
+      "analogy_story": "Think of S/MIME as an official sealed school envelope:",
+      "points": [
+        {
+          "feature": "1. What is MIME?",
+          "meaning": "Regular old email could only send plain typewriter letters. MIME lets you send photos, music, and PDF homework sheets!"
+        },
+        {
+          "feature": "2. What makes it S/MIME?",
+          "meaning": "The 'S' stands for Secure! It wraps the photo or letter inside a locked digital envelope with an official certificate stamp from the school principal."
+        },
+        {
+          "feature": "3. Clear-Signed vs. Enveloped",
+          "meaning": "Clear-Signed is like pinning an official certified ribbon on a letter: anyone can read the letter, but they know for sure it came from the Principal. Enveloped is locking it in a metal box so nobody except the teacher can open it."
+        }
+      ],
+      "takeaway": "S/MIME gives emails a shiny blue checkmark that proves who sent it and keeps secrets locked from hackers."
+    }
+  },
+  {
+    "id": "U4-Q3",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 3,
+    "question": "Explain IP Security architecture with ESP and AH protocols.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "IPSec",
+      "Network Layer Security",
+      "AH",
+      "Authentication Header",
+      "ESP",
+      "Encapsulating Security Payload",
+      "IP Header",
+      "Integrity",
+      "Confidentiality",
+      "Anti-Replay",
+      "RFC 4301"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-25 to 4-37)",
+    "exam_answer": {
+      "introduction": "Internet Protocol Security (IPSec) is an open suite of protocols developed by the IETF (RFC 4301) to provide cryptographic security at the IP / Network Layer (Layer 3 of the OSI model). Operating at Layer 3 allows IPSec to protect all higher-layer protocols (TCP, UDP, ICMP, HTTP, FTP, VoIP) completely transparently to end applications and users.",
+      "ipsec_core_services": [
+        "Data Origin Authentication: Verifies the true sender of each IP packet.",
+        "Connectionless Integrity: Detects unauthorized packet modification in transit.",
+        "Confidentiality: Scrambles packet payload preventing wiretapping and eavesdropping.",
+        "Anti-Replay Protection: Rejects duplicate/replayed packets using a monotonic 32/64-bit sequence window.",
+        "Access Control: Enforces packet filtering based on Security Policy Database (SPD)."
+      ],
+      "ah_protocol": {
+        "name": "1. Authentication Header (AH) - IP Protocol 51",
+        "purpose": "Provides data origin authentication, data integrity, and anti-replay protection. AH DOES NOT provide confidentiality (no encryption).",
+        "fields": [
+          "Next Header (8 bits): Identifies higher-layer protocol (e.g., TCP=6, ESP=50).",
+          "Payload Length (8 bits): Size of AH in 32-bit words.",
+          "Reserved (16 bits): For future use.",
+          "Security Parameters Index (SPI - 32 bits): Identifies the specific Security Association (SA).",
+          "Sequence Number (32 bits): Monotonically increasing counter for anti-replay defense.",
+          "Integrity Check Value (ICV): Variable-length HMAC (e.g., HMAC-SHA256) computed over immutable IP header fields and packet payload."
+        ],
+        "immutable_vs_mutable": "AH protects the entire IP packet EXCEPT mutable fields altered by routers in transit (TTL, Header Checksum, TOS/DSCP)."
+      },
+      "esp_protocol": {
+        "name": "2. Encapsulating Security Payload (ESP) - IP Protocol 50",
+        "purpose": "Provides packet confidentiality (encryption), optionally with data origin authentication, integrity, and anti-replay defense.",
+        "fields": [
+          "ESP Header: Security Parameters Index (SPI - 32 bits) and Sequence Number (32 bits).",
+          "ESP Payload Data: Ciphertext of higher-layer data (TCP + data).",
+          "ESP Trailer: Padding (0-255 bytes for block cipher alignment), Pad Length (8 bits), and Next Header (8 bits).",
+          "ESP Authentication Data (Trailer): Integrity Check Value (ICV) computed over ESP Header, Payload, and Trailer."
+        ]
+      },
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |                  AH AND ESP PACKET STRUCTURES               |\n   +-------------------------------------------------------------+\n   AH PACKET FORMAT:\n   +-------------+---------+-----------+-------------+-----------+\n   | IP Header   | AH Hdr  | TCP/UDP   | Application | (Entire   |\n   | (Immutable) | (Prot51)| Header    | Data        | packet    |\n   +-------------+---------+-----------+-------------+ protected)|\n                 <--------- AUTHENTICATED / ICV ------------->\n\n   ESP PACKET FORMAT:\n   +-----------+---------+-----------+-------------+---------+---+\n   | IP Header | ESP Hdr | TCP/UDP   | Application | ESP Trl |ESP|\n   | (Prot 50) | (SPI,SN)| Header    | Data        | (Pad,NH)|ICV|\n   +-----------+---------+-----------+-------------+---------+---+\n                         <-------- ENCRYPTED ------>\n               <---------------- AUTHENTICATED ------------->",
+      "comparison": "| Feature | AH (Authentication Header) | ESP (Encapsulating Security Payload) |\n| :--- | :--- | :--- |\n| IP Protocol Number | 51 | 50 |\n| Confidentiality (Encryption) | NO (Never encrypts) | YES (AES, 3DES) |\n| Integrity & Authentication | YES (Protects payload + outer IP) | YES (Protects ESP header, payload & trailer) |\n| NAT Traversal Compatibility | Broken by NAT (IP header changes) | Supported via NAT-T (UDP port 4500 encapsulation) |\n| Primary Use Case | High-security integrity without secrecy | Standard modern VPN tunnels everywhere |",
+      "conclusion": "Because ESP with authentication provides both secrecy and integrity (and functions seamlessly across NAT routers via NAT-T), modern enterprise VPN deployments almost exclusively deploy ESP over AH."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Armored Postal Truck and The Wax-Sealed Glass Truck",
+      "analogy_story": "Think of IP packets traveling across the internet like delivery trucks on a highway:",
+      "points": [
+        {
+          "feature": "1. What is IPSec?",
+          "meaning": "A security system for the whole highway! It protects ALL cargo trucks (web, email, video games) without the trucks having to do anything special."
+        },
+        {
+          "feature": "2. AH (Authentication Header) = Clear Glass Truck with Police Wax Seal",
+          "meaning": "Everyone can see through the glass at what's inside (no secrets/confidentiality), but the back doors have a tamper-proof police seal. If anyone scratches the lock or touches the cargo, alarms sound immediately!"
+        },
+        {
+          "feature": "3. ESP (Encapsulating Security Payload) = Heavy Steel Armored Truck",
+          "meaning": "The truck has solid steel walls: nobody can peek inside (Confidentiality). And the door has a biometric guard lock (Integrity). Nobody can see what you're carrying or steal it!"
+        }
+      ],
+      "takeaway": "AH provides certified proof that nothing was touched; ESP provides both certified proof AND complete invisibility!"
+    }
+  },
+  {
+    "id": "U4-Q4",
+    "unit": "UNIT IV",
+    "unit_title": "E-MAIL AND IP SECURITY",
+    "question_number": 4,
+    "question": "Explain IPSec modes, Security Association and Key Management.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "Transport Mode",
+      "Tunnel Mode",
+      "Security Association",
+      "SA",
+      "SAD",
+      "SPD",
+      "SPI",
+      "ISAKMP",
+      "IKE",
+      "Oakley",
+      "Diffie-Hellman"
+    ],
+    "syllabus_ref": "Chapter 4 (Pages 4-32 to 4-41)",
+    "exam_answer": {
+      "introduction": "The operational strength and flexibility of IPSec stem from its three architectural pillars: its dual operational modes (Transport vs. Tunnel), its unidirectional Security Associations (SA), and its automated cryptographic key management protocols (IKE / ISAKMP).",
+      "ipsec_modes": [
+        {
+          "mode": "1. Transport Mode",
+          "description": "Protects higher-layer protocols (transport layer payload) directly between two terminating endpoints.",
+          "packet_structure": "[Original IP Header] + [IPSec Header (AH/ESP)] + [TCP/UDP Payload] + [ESP Trailer]",
+          "use_case": "End-to-End host-to-host security (e.g., workstation communicating directly with a remote database server in a private LAN)."
+        },
+        {
+          "mode": "2. Tunnel Mode",
+          "description": "Protects the entire original IP packet. The original packet is encapsulated completely inside a brand-new outer IP header.",
+          "packet_structure": "[New Outer IP Header] + [IPSec Header] + [Original IP Header] + [TCP/UDP Payload] + [ESP Trailer]",
+          "use_case": "Site-to-Site Gateway-to-Gateway VPNs linking branch offices over the untrusted public Internet, hiding internal IP subnet topology."
+        }
+      ],
+      "security_association": {
+        "definition": "A Security Association (SA) is a one-way (unidirectional) logical connection between two IPSec entities that defines the cryptographic security parameters for that communication channel.",
+        "unidirectional_nature": "Because an SA is unidirectional, bidirectional communication between Alice and Bob requires two distinct SAs (one outbound, one inbound).",
+        "sa_identifying_triad": [
+          "Security Parameters Index (SPI): 32-bit bitstring carried in AH/ESP header.",
+          "IP Destination Address: IPv4/IPv6 address of the destination endpoint.",
+          "Security Protocol Identifier: Indicates whether the protocol is AH (51) or ESP (50)."
+        ],
+        "database_structures": [
+          "Security Association Database (SAD): Stores active SA state (keys, sequence counters, lifetime, algorithms).",
+          "Security Policy Database (SPD): Defines policy rules deciding whether packets are DISCARDED, BYPASSED (unprotected), or PROTECTED via IPSec."
+        ]
+      },
+      "key_management": {
+        "manual_keying": "System administrator manually configures shared cryptographic keys and SPIs on every participating router. Feasible only for tiny static networks.",
+        "automated_keying": [
+          "Internet Key Exchange (IKE): Standard automated hybrid protocol synthesizing Oakley, SKEME, and ISAKMP framework.",
+          "Phase 1 (IKE SA): Establishes a secure, authenticated communications channel between peer security gateways using Diffie-Hellman key exchange (Main Mode or Aggressive Mode).",
+          "Phase 2 (Child / IPSec SA): Uses the secure Phase 1 channel to negotiate actual IPSec SAs and encryption keys for business data traffic (Quick Mode)."
+        ]
+      },
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |               TRANSPORT MODE VS. TUNNEL MODE                |\n   +-------------------------------------------------------------+\n   ORIGINAL PACKET:\n   [ Orig IP Hdr ] [ TCP Hdr ] [ Data ]\n\n   TRANSPORT MODE (Host-to-Host):\n   [ Orig IP Hdr ] [ ESP Hdr ] [ TCP Hdr ] [ Data ] [ ESP Trl ] [ ICV ]\n                   <--------- ENCRYPTED ---------->\n\n   TUNNEL MODE (Gateway-to-Gateway VPN):\n   [ NEW IP Hdr ] [ ESP Hdr ] [ Orig IP Hdr ] [ TCP Hdr ] [ Data ] [ ESP Trl ] [ ICV ]\n                              <---------------- ENCRYPTED --------------->",
+      "conclusion": "Combining Tunnel Mode with automated IKE key management enables secure, scalable, zero-touch Site-to-Site and Client-to-Site VPNs that protect global enterprise data."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Postcard inside an Envelope and The Secret Tunnel Walkie-Talkies",
+      "analogy_story": "Here is how IPSec Modes and Key Management work:",
+      "points": [
+        {
+          "feature": "1. Transport Mode = Writing in Invisible Ink",
+          "meaning": "You write a letter on a postcard. The mailman can still see the address on the outside, but the message itself is written in invisible ink."
+        },
+        {
+          "feature": "2. Tunnel Mode = Putting the Whole Postcard inside a Blank Sealed Box",
+          "meaning": "You put the entire postcard (including the internal house address!) inside a brand new unmarked steel box addressed only between the Main City Post Offices. Spies have NO idea who the real recipient inside is!"
+        },
+        {
+          "feature": "3. Security Association (SA) = The Handshake Agreement",
+          "meaning": "Before whispering, two guards agree: 'We will use Secret Alphabet #4, and this secret agreement lasts for 1 hour.' (One agreement for talking, one for listening)."
+        },
+        {
+          "feature": "4. IKE (Key Management) = The Automated Robot Messenger",
+          "meaning": "Instead of a human driving to every router to type passwords, two smart computers do a magic math riddle (Diffie-Hellman) in 2 seconds to invent fresh unhackable keys automatically!"
+        }
+      ],
+      "takeaway": "Tunnel mode creates an invisible armored tunnel across the internet, and IKE changes the locks automatically every few hours!"
+    }
+  }
+]

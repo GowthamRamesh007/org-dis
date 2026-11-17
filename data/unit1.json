@@ -1,0 +1,419 @@
+[
+  {
+    "id": "U1-Q1",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 1,
+    "question": "Explain the critical characteristics of information and its importance.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "Availability",
+      "Accuracy",
+      "Authenticity",
+      "Confidentiality",
+      "Integrity",
+      "Utility",
+      "Possession",
+      "Value of Information"
+    ],
+    "syllabus_ref": "Chapter 1 (Pages 1-7 to 1-8)",
+    "exam_answer": {
+      "introduction": "Information is an organization's most critical asset. In computer and information security, the value of information is determined by its characteristics. If any of these characteristics are compromised, the utility, trust, and business viability of the system degrade.",
+      "characteristics": [
+        {
+          "name": "1. Availability",
+          "description": "Enables authorized users\u2014persons or computer systems\u2014to access information in a usable format without interference or obstruction whenever required.",
+          "key_aspects": "High uptime, fault tolerance, robust disaster recovery, mitigation against Denial of Service (DoS) attacks."
+        },
+        {
+          "name": "2. Accuracy",
+          "description": "Describes how information is free from mistakes or errors and has the value that the user expects. If information contains inaccurate data, it loses its credibility and leads to incorrect business decisions.",
+          "key_aspects": "Error checking, validation rules, input sanitization, checksums."
+        },
+        {
+          "name": "3. Authenticity",
+          "description": "The quality or state of being genuine or original, rather than a reproduction or fabrication. It confirms that the information was created, transmitted, or received by the claimed sender.",
+          "key_aspects": "Digital signatures, digital certificates, message authentication codes (MAC), public key infrastructure."
+        },
+        {
+          "name": "4. Confidentiality",
+          "description": "The protection of information from disclosure or exposure to unauthorized persons or systems. Only individuals with proper authorization have read/access rights.",
+          "key_aspects": "Cryptography (symmetric/asymmetric encryption), access control lists (ACLs), role-based access control, masking."
+        },
+        {
+          "name": "5. Integrity",
+          "description": "The state of being whole, complete, and uncorrupted. The information is not altered, modified, or destroyed in an unauthorized manner during storage or transit.",
+          "key_aspects": "Cryptographic hash functions (SHA-256, SHA-512), message digests, write-once storage."
+        },
+        {
+          "name": "6. Utility",
+          "description": "The quality or state of having value for some purpose or end. Information must be in a meaningful, actionable format for end users.",
+          "key_aspects": "Proper encoding, compatible schema, readable presentation format."
+        },
+        {
+          "name": "7. Possession / Ownership",
+          "description": "The condition of having, holding, or being in control of information. While confidentiality protects knowledge of data, possession pertains to physical/logical custody.",
+          "key_aspects": "Data custody, intellectual property rights, non-repudiation, physical access control."
+        }
+      ],
+      "ascii_diagram": "+-------------------------------------------------------------+\n|            CRITICAL CHARACTERISTICS OF INFORMATION          |\n+-------------------------------------------------------------+\n| [Availability]     -> Access by authorized users when needed |\n| [Accuracy]         -> Free of error, precise and true       |\n| [Authenticity]     -> Genuine origin, verified sender        |\n| [Confidentiality]  -> Prevent unauthorized disclosure        |\n| [Integrity]        -> Whole, intact, uncorrupted data        |\n| [Utility]          -> Meaningful and useful format           |\n| [Possession]       -> Control and ownership of data          |\n+-------------------------------------------------------------+",
+      "importance_in_business": [
+        "Protection of Intellectual Property & Competitive Edge: Guards proprietary research, trade secrets, and customer data.",
+        "Regulatory & Legal Compliance: Meets statutory mandates like GDPR, HIPAA, and IT Act 2000.",
+        "Business Continuity & Resilience: Assures operations continue uninterrupted despite hardware failures or cyber threats.",
+        "Customer Trust & Reputation: Upholds organizational credibility by guaranteeing accurate records and private data handling."
+      ],
+      "conclusion": "A well-rounded information security architecture must balance all seven characteristics. Compromising even one attribute (e.g., integrity compromised by malware, or availability compromised by ransomware) paralyzes business operations."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Secret Family Recipe Notebook",
+      "analogy_story": "Imagine your grandmother has a secret golden notebook containing her famous chocolate cookie recipe. Let's see how the 7 characteristics protect her recipe:",
+      "points": [
+        {
+          "feature": "Confidentiality",
+          "meaning": "Keeping it Secret: Only grandma and you can open the notebook. The neighborhood bakery cannot peek at it."
+        },
+        {
+          "feature": "Integrity",
+          "meaning": "No Tampering: Nobody sneaks in and changes '1 spoon sugar' to '1 cup salt'. The recipe stays exactly as grandma wrote it."
+        },
+        {
+          "feature": "Availability",
+          "meaning": "Always There When You Need It: When you want to bake cookies on Sunday afternoon, the notebook is right on the shelf, not locked away in a lost box."
+        },
+        {
+          "feature": "Accuracy",
+          "meaning": "Correct Numbers: The measurements are exact (e.g., '180\u00b0C for 15 mins') with zero printing mistakes."
+        },
+        {
+          "feature": "Authenticity",
+          "meaning": "Real Deal: You can see grandma's actual handwriting and her signature wax seal. You know it's not a fake photocopy from a stranger."
+        },
+        {
+          "feature": "Utility",
+          "meaning": "Easy to Read: The recipe is written in simple English, not in backward mirror handwriting or hieroglyphics that make it useless."
+        },
+        {
+          "feature": "Possession",
+          "meaning": "Holding It: You physically have the notebook in your hands. Even if an intruder memorized one page, you still own the book."
+        }
+      ],
+      "takeaway": "If someone steals the book, spills ink on it, or changes the sugar to salt, the cookies will be ruined! Security keeps information safe, true, and ready."
+    }
+  },
+  {
+    "id": "U1-Q2",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 2,
+    "question": "Explain the NSTISSC Security Model with a neat diagram.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "NSTISSC",
+      "McCumber Cube",
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Storage",
+      "Processing",
+      "Transmission",
+      "Policy",
+      "Education",
+      "Technology"
+    ],
+    "syllabus_ref": "Chapter 1 (Pages 1-8 to 1-9)",
+    "exam_answer": {
+      "introduction": "The NSTISSC (National Security Telecommunications and Information Systems Security Committee) Security Model, commonly known as the McCumber Cube (developed by John McCumber in 1991), is an authoritative framework for establishing and evaluating information security architectures. It represents security as a three-dimensional 3x3x3 matrix containing 27 discrete cells.",
+      "dimensions": [
+        {
+          "dimension_name": "Dimension 1: Information Security Goals (CIA Triad)",
+          "details": [
+            "Confidentiality: Restricting access to information only to authorized entities and preventing unauthorized disclosure.",
+            "Integrity: Safeguarding the accuracy and completeness of information and preventing unauthorized modification.",
+            "Availability: Ensuring that authorized users have prompt, dependable access to information and resources."
+          ]
+        },
+        {
+          "dimension_name": "Dimension 2: Information States (Data States)",
+          "details": [
+            "Storage (Data at Rest): Data stored in static form on non-volatile media (hard drives, SSDs, SAN, NAS, tapes, optical media).",
+            "Processing (Data in Use): Data being actively computed, manipulated, or loaded into volatile memory (RAM, CPU cache, registers).",
+            "Transmission (Data in Transit): Data traversing communications channels, local area networks, or public internet (cables, wireless, packets)."
+          ]
+        },
+        {
+          "dimension_name": "Dimension 3: Security Countermeasures / Safeguards",
+          "details": [
+            "Policy: Regulatory frameworks, corporate guidelines, acceptable use policies, compliance mandates, and organizational rules.",
+            "Education / Awareness & Training: Training employees, developing security culture, educating personnel against social engineering.",
+            "Technology: Software and hardware solutions (firewalls, encryption, IDS/IPS, biometric scanners, antivirus)."
+          ]
+        }
+      ],
+      "ascii_diagram": "                     +---------------------------------------+\n                    /               POLICY                  /|\n                   /              EDUCATION                / |\n                  /              TECHNOLOGY               /  |\n                 +---------------------------------------+   |\n                /                                       /|   |\n               /         [CONFIDENTIALITY]             / |   |\n              /            [INTEGRITY]                /  |   |\n             /            [AVAILABILITY]             /   |   +\n            +---------------------------------------+    |  /\n            |               |           |           |    | /  TRANSMISSION\n            |  STORAGE      |PROCESSING |TRANSMISSION|   |/   PROCESSING\n            | (Data at Rest)| (In Use)  | (Transit) |   +    STORAGE\n            +---------------+-----------+-----------+  /\n            |   Cell 1      |  Cell 2   |  Cell 3   | /\n            +---------------+-----------+-----------+/\n             <------- INFORMATION STATES ----------->",
+      "cell_analysis": "The intersection of the 3 dimensions creates 3 x 3 x 3 = 27 specific security cells. For comprehensive protection, security professionals must evaluate every single cell. For example:\n- Cell: Confidentiality + Storage + Technology -> Hard drive encryption (BitLocker, AES-256).\n- Cell: Confidentiality + Transmission + Technology -> TLS/SSL or IPSec encryption.\n- Cell: Integrity + Processing + Policy -> Strict coding guidelines preventing buffer overflows.\n- Cell: Availability + Storage + Technology -> RAID storage, daily offsite automated backups.\n- Cell: Confidentiality + Transmission + Education -> Training employees not to send plain-text credentials over email.",
+      "advantages": [
+        "Comprehensive Coverage: Prevents security blind spots by systematically testing all data states against all threats.",
+        "Balance: Emphasizes that technology alone is insufficient without policies and human education.",
+        "Universal Applicability: Applies equally to small business environments and vast enterprise cloud systems."
+      ],
+      "conclusion": "The McCumber Cube reminds organizations that addressing technology alone leaves systems vulnerable; robust defense requires synchronous integration of policies, human training, and technical controls across all phases of data lifecycle."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Rubik's Cube of Toy Safety",
+      "analogy_story": "Imagine you have a magical Rubik's Cube with 27 tiny blocks. Each side looks at protecting your favorite toy in a different way:",
+      "points": [
+        {
+          "feature": "Side 1: What are our 3 big rules? (Goals)",
+          "meaning": "1. Keep it private (No peeking). 2. Keep it unbroken (No breaking parts). 3. Always ready to play (Don't lose it under the bed)."
+        },
+        {
+          "feature": "Side 2: Where is the toy right now? (States)",
+          "meaning": "1. In the toy chest (Sleeping/Storage). 2. In your hands playing with it (Active/Processing). 3. Handing it to your friend in the school bus (Moving/Transmission)."
+        },
+        {
+          "feature": "Side 3: How do we guard it? (Safeguards)",
+          "meaning": "1. The Rule Book (Mom's rules: 'Always put toys away'). 2. Teaching (Showing your brother how to hold it gently). 3. The Gear (A padded lockbox and bubble wrap)."
+        }
+      ],
+      "takeaway": "If you buy a super expensive lockbox (Technology) but leave the keys on the table (bad Education) or forget to lock it (no Policy), your toy can still get lost or broken! All three must work together."
+    }
+  },
+  {
+    "id": "U1-Q3",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 3,
+    "question": "Describe the components of an Information System and methods of securing them.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "Information System",
+      "Software",
+      "Hardware",
+      "Data",
+      "People",
+      "Procedures",
+      "Networks",
+      "Securing Components"
+    ],
+    "syllabus_ref": "Chapter 1 (Pages 1-9 to 1-11)",
+    "exam_answer": {
+      "introduction": "An Information System (IS) is much more than computer hardware; it is an integrated solution composed of six interdependent components: Software, Hardware, Data, People, Procedures, and Networks. Security breaches frequently occur at the weakest link among these components.",
+      "components_and_security": [
+        {
+          "component": "1. Software",
+          "description": "Encompasses operating systems, enterprise applications, database management systems, and utility programs that execute business logic.",
+          "security_methods": [
+            "Adopt Secure SDLC (DevSecOps) with threat modeling and code reviews.",
+            "Enforce regular security patch management and automated updates.",
+            "Input validation and sanitization to stop SQL injection, buffer overflows, and Cross-Site Scripting (XSS).",
+            "Static (SAST) and Dynamic (DAST) Application Security Testing."
+          ]
+        },
+        {
+          "component": "2. Hardware",
+          "description": "Physical technology including servers, client workstations, storage arrays, routers, switches, and edge mobile devices.",
+          "security_methods": [
+            "Physical perimeter security: Biometric access, RFID door badges, CCTV, locked server racks.",
+            "Environmental controls: Redundant UPS power, HVAC temperature and humidity control, FM200 fire suppression.",
+            "Hardware hardening: Disabling unused physical ports (USB, optical drives), BIOS/UEFI passwords, Trusted Platform Modules (TPM)."
+          ]
+        },
+        {
+          "component": "3. Data (The Core Asset)",
+          "description": "Raw facts and figures, customer databases, financial records, transaction logs, and intellectual property.",
+          "security_methods": [
+            "Cryptographic controls: AES-256 for data at rest, TLS 1.3 for data in transit.",
+            "Access Control Lists (ACLs) and Role-Based Access Control (RBAC).",
+            "Data Loss Prevention (DLP) systems and database activity monitoring.",
+            "Regular automated backups using the 3-2-1 backup rule."
+          ]
+        },
+        {
+          "component": "4. People (Human Element)",
+          "description": "Employees, system administrators, network engineers, vendors, third-party contractors, and clients. Often the weakest link.",
+          "security_methods": [
+            "Mandatory security awareness training (anti-phishing drills, social engineering defense).",
+            "Background checks, non-disclosure agreements (NDAs), and strict hiring/exit procedures.",
+            "Principle of Least Privilege and separation of duties to deter insider fraud.",
+            "Multi-Factor Authentication (MFA) enforcement across all accounts."
+          ]
+        },
+        {
+          "component": "5. Procedures",
+          "description": "Written policies, operational guidelines, configuration standards, standard operating procedures (SOPs), and incident recovery plans.",
+          "security_methods": [
+            "Formal incident response plans and periodic table-top disaster recovery drills.",
+            "Periodic external and internal compliance audits (ISO 27001, SOC 2).",
+            "Change control management processes to review all infrastructure modifications.",
+            "Clear Acceptable Use Policies (AUP) signed by all personnel."
+          ]
+        },
+        {
+          "component": "6. Networks",
+          "description": "Interconnection pathways linking hardware, including local area networks (LAN), wireless networks (Wi-Fi), wide area networks (WAN), and cloud connections.",
+          "security_methods": [
+            "Network segmentation and micro-segmentation with DMZs and VLANs.",
+            "Deployment of Next-Generation Firewalls (NGFW) and Intrusion Detection/Prevention Systems (IDS/IPS).",
+            "VPNs with IPsec/SSL for secure remote access.",
+            "WPA3 Enterprise encryption and 802.1X port authentication for wireless access."
+          ]
+        }
+      ],
+      "ascii_diagram": "                     +---------------------------------------+\n                     |      COMPONENTS OF AN INFORMATION     |\n                     |                SYSTEM                 |\n                     +---------------------------------------+\n                                         |\n     +---------------+-------------------+-------------------+---------------+\n     |               |                   |                   |               |\n[Software]      [Hardware]             [Data]             [People]     [Procedures]\n - DevSecOps     - Biometrics       - AES Encryption    - Security       - SOPs\n - Patch Mgmt    - Server Locks     - 3-2-1 Backups       Awareness      - ISO 27001\n - Input Sanit.  - Redundant UPS    - RBAC / DLP        - MFA & Least    - Disaster\n                                                          Privilege        Recovery\n                                         |\n                                    +----+----+\n                                    | [Networks] |\n                                    | - NGFW / IDS/IPS |\n                                    | - VPN & WPA3     |\n                                    +---------+",
+      "balancing_security_and_access": "Securing an IS requires balancing security and user accessibility. Overly restrictive measures frustrate legitimate users, whereas excessive leniency invites breaches. The goal is friction-minimized security.",
+      "conclusion": "Total information security cannot be achieved by protecting only one or two components. A breach in procedures or human error can bypass the strongest hardware firewalls. Security must encompass all six components harmoniously."
+    },
+    "simple_explanation": {
+      "analogy_title": "The High-Tech Pizza Restaurant",
+      "analogy_story": "Think of an Information System like a busy, famous pizza restaurant:",
+      "points": [
+        {
+          "feature": "1. Hardware = The Kitchen & Oven",
+          "meaning": "The physical stoves, dough mixers, and cash registers. We secure it with heavy locks on the front door and fire alarms."
+        },
+        {
+          "feature": "2. Software = The Cash Register OS & Recipes",
+          "meaning": "The software that takes orders and calculates bills. We secure it by updating it so it doesn't give away free pizzas by glitching."
+        },
+        {
+          "feature": "3. Data = Customer Orders & Secret Sauce Recipe",
+          "meaning": "The secret spices list and customer phone numbers. We lock the secret formula in a safe and never show it to competitors."
+        },
+        {
+          "feature": "4. People = Chefs, Cashiers & Delivery Drivers",
+          "meaning": "The humans working there. We teach them never to open the back door to suspicious strangers wearing fake uniforms."
+        },
+        {
+          "feature": "5. Procedures = The Rulebook for Cleanliness & Safety",
+          "meaning": "The step-by-step checklist: wash hands before touching dough, check the gas valve before leaving at night."
+        },
+        {
+          "feature": "6. Network = The Walkie-Talkies & Internet Ordering Wire",
+          "meaning": "How orders travel from the customer app to the kitchen printer. We scramble the signal so neighbors can't eavesdrop."
+        }
+      ],
+      "takeaway": "If even one part fails\u2014like a chef leaving the back door open (People), or someone cutting the phone wire (Network)\u2014the restaurant shuts down!"
+    }
+  },
+  {
+    "id": "U1-Q4",
+    "unit": "UNIT I",
+    "unit_title": "INTRODUCTION",
+    "question_number": 4,
+    "question": "Explain the phases of Security SDLC and its importance.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "SecSDLC",
+      "Investigation",
+      "Analysis",
+      "Logical Design",
+      "Physical Design",
+      "Implementation",
+      "Maintenance and Review"
+    ],
+    "syllabus_ref": "Chapter 1 (Pages 1-11 to 1-15)",
+    "exam_answer": {
+      "introduction": "The Security Systems Development Life Cycle (SecSDLC) is a structured, formal methodology for integrating security controls and risk management into every phase of system development, rather than treating security as an afterthought. It mirrors the traditional SDLC (Waterfall or Agile) while introducing specialized security objectives.",
+      "phases": [
+        {
+          "phase_number": "Phase 1: Investigation",
+          "sdlc_focus": "Defines project scope, business goals, and feasibility.",
+          "security_focus": [
+            "Identifies organizational security policy, regulatory mandates, and project charter.",
+            "Determines high-level risk appetite and management commitment.",
+            "Conducts preliminary Feasibility Analysis: economic, technical, operational, and legal security viability."
+          ]
+        },
+        {
+          "phase_number": "Phase 2: Analysis",
+          "sdlc_focus": "Gathers user requirements and evaluates current systems.",
+          "security_focus": [
+            "Risk Assessment: Identifies assets, potential threats, and system vulnerabilities.",
+            "Threat Modeling (e.g., STRIDE) and Business Impact Analysis (BIA).",
+            "Evaluates existing security policies and legal liabilities to establish formal security requirements."
+          ]
+        },
+        {
+          "phase_number": "Phase 3: Logical Design",
+          "sdlc_focus": "Develops system blueprint, entity-relationship diagrams, and architectural workflows.",
+          "security_focus": [
+            "Creates blueprint for security policies, access control models, and network zoning.",
+            "Designs incident response, business continuity, and disaster recovery architectures.",
+            "Evaluates security alternatives without tying down to specific brand vendors."
+          ]
+        },
+        {
+          "phase_number": "Phase 4: Physical Design",
+          "sdlc_focus": "Selects concrete hardware, software platforms, and database engines.",
+          "security_focus": [
+            "Selects specific security technologies (firewall vendors, encryption chips, biometric hardware).",
+            "Defines cryptographic key lengths (e.g., RSA 4096-bit, AES 256-bit).",
+            "Specifies physical security measures (mantraps, CCTV, secure server room placement)."
+          ]
+        },
+        {
+          "phase_number": "Phase 5: Implementation",
+          "sdlc_focus": "Coding, building, hardware installation, and general acceptance testing.",
+          "security_focus": [
+            "Secure coding practices and peer code reviews.",
+            "Vulnerability scanning, static/dynamic code analysis (SAST/DAST), and penetration testing.",
+            "Employee security awareness training and formal deployment sign-off."
+          ]
+        },
+        {
+          "phase_number": "Phase 6: Maintenance and Review",
+          "sdlc_focus": "Operational upkeep, software upgrades, and bug fixes.",
+          "security_focus": [
+            "Continuous monitoring, intrusion detection, and Security Operations Center (SOC) log analysis.",
+            "Periodic vulnerability assessments, penetration re-tests, and regulatory compliance audits.",
+            "Incident response execution and patching emerging zero-day vulnerabilities."
+          ]
+        }
+      ],
+      "ascii_diagram": "   +--------------------------------------------------------------+\n   |             SECURITY SDLC (SecSDLC) PHASES                   |\n   +--------------------------------------------------------------+\n   |  [1. Investigation]      -> Scope, Policy, Feasibility       |\n   |         |                                                    |\n   |         v                                                    |\n   |  [2. Analysis]           -> Asset Analysis, Risk & Threats   |\n   |         |                                                    |\n   |         v                                                    |\n   |  [3. Logical Design]     -> Security Policies & Architecture |\n   |         |                                                    |\n   |         v                                                    |\n   |  [4. Physical Design]    -> Tech Evaluation & Vendor Selection|\n   |         |                                                    |\n   |         v                                                    |\n   |  [5. Implementation]     -> Code, Secure Config, Pen Testing |\n   |         |                                                    |\n   |         v                                                    |\n   |  [6. Maintenance/Review] -> Continuous Monitoring & Audits   |\n   +--------------------------------------------------------------+",
+      "importance": [
+        "Proactive vs. Reactive: Fixing a security vulnerability during the Analysis or Design phase is up to 100 times cheaper than fixing it after a catastrophic live breach.",
+        "Compliance & Assurance: Guarantees statutory adherence to ISO/IEC 27001, HIPAA, PCI-DSS from day one.",
+        "Structured Accountability: Assigns unambiguous ownership for risk mitigation across all engineering and management tiers.",
+        "Resilient Architecture: Creates robust defense-in-depth instead of superficial, easily circumvented perimeter add-ons."
+      ],
+      "conclusion": "SecSDLC is an iterative lifecycle, not a one-time event. As the threat landscape evolves with new zero-day attacks, the maintenance phase feeds directly back into new investigation cycles, ensuring perpetually fortified information systems."
+    },
+    "simple_explanation": {
+      "analogy_title": "Building a Castle with Secret Moats and Watchtowers",
+      "analogy_story": "Imagine building a fortress castle. You don't build the entire stone castle and then say, 'Oops! Where should we put the front door locks?' You plan security from the very first sketch:",
+      "points": [
+        {
+          "feature": "1. Investigation (Thinking First)",
+          "meaning": "Asking: 'What are we protecting? The King's gold! How much gold is it? Is it worth digging a giant moat?'"
+        },
+        {
+          "feature": "2. Analysis (Spotting Dangers)",
+          "meaning": "Checking: 'Who might attack? Dragon? Bandits? Sneaky thieves? What weapons will they bring?'"
+        },
+        {
+          "feature": "3. Logical Design (Drawing the Blueprint)",
+          "meaning": "Drawing on paper: 'Let's put the gold in the center, surround it with two walls, and only have one drawbridge.'"
+        },
+        {
+          "feature": "4. Physical Design (Picking Materials)",
+          "meaning": "Deciding: 'We will use solid oak wood reinforced with iron spikes, and a heavy brass padlock from the best blacksmith.'"
+        },
+        {
+          "feature": "5. Implementation (Building & Testing)",
+          "meaning": "Laying the stones, hiring guards, and having friendly knights try to climb the wall to see if anyone can sneak in (Testing!)."
+        },
+        {
+          "feature": "6. Maintenance (Guarding Everyday)",
+          "meaning": "Patrolling the walls every night, repairing cracked stones, and checking if enemies invented new catapults."
+        }
+      ],
+      "takeaway": "If you plan security before building, your castle stands strong. If you build it fast without thinking, a single thief can walk right through the back window!"
+    }
+  }
+]

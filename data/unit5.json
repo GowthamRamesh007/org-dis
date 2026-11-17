@@ -1,0 +1,339 @@
+[
+  {
+    "id": "U5-Q1",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 1,
+    "question": "Explain SSL architecture, objectives and layers with a neat diagram.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "SSL",
+      "Secure Sockets Layer",
+      "Netscape",
+      "SSL Architecture",
+      "SSL Layers",
+      "SSL Record Protocol",
+      "Handshake Protocol",
+      "Change Cipher Spec",
+      "Alert Protocol",
+      "HTTP over SSL"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-10 to 5-14)",
+    "exam_answer": {
+      "introduction": "Secure Sockets Layer (SSL), originally pioneered by Netscape Communications in 1994, is a transport-level cryptographic security framework designed to establish encrypted, authenticated, and tamper-proof communication channels over untrusted TCP/IP networks, most prominently for HTTP (forming HTTPS).",
+      "ssl_objectives": [
+        "Cryptographic Confidentiality: Prevents eavesdropping on sensitive HTTP data (passwords, credit card numbers, session tokens) using symmetric ciphers (AES, 3DES).",
+        "Message Integrity: Ensures that packets have not been tampered with or modified in transit using keyed Message Authentication Codes (MAC).",
+        "Peer Authentication: Verifies the true identity of the server (mandatory) and client (optional) using X.509 public-key certificates.",
+        "Interoperability & Transport Independence: Sits transparently between Application Layer (HTTP, FTP, SMTP) and Transport Layer (TCP)."
+      ],
+      "ssl_protocol_stack_layers": [
+        {
+          "layer": "1. SSL Record Protocol (Lower Layer)",
+          "details": [
+            "Operates directly on top of transport layer (TCP).",
+            "Provides basic security services (confidentiality and message integrity) to higher-layer protocols.",
+            "Processes outgoing application data: Fragments data -> Optionally compresses -> Computes HMAC -> Encrypts -> Prepends SSL header -> Passes to TCP."
+          ]
+        },
+        {
+          "layer": "2. SSL Higher-Layer Protocols (Upper Layer - 3 sub-protocols)",
+          "details": [
+            "SSL Handshake Protocol: Negotiates cipher suites (cryptographic algorithms), authenticates server/client via X.509 certificates, and safely computes shared master secret keys prior to any application data transfer.",
+            "SSL Change Cipher Spec Protocol: Consists of a single byte (value 1); signals that subsequent records will be protected under the newly negotiated cipher suite and keys.",
+            "SSL Alert Protocol: Conveys session alerts and errors categorized by severity (Warning or Fatal), including unexpected_message, bad_record_mac, certificate_expired, and handshake_failure."
+          ]
+        }
+      ],
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |                    SSL PROTOCOL ARCHITECTURE                |\n   +-------------------------------------------------------------+\n   +-------------------------------------------------------------+\n   |  APPLICATION LAYER (HTTP, FTP, SMTP, TELNET, etc.)          |\n   +-------------------------------------------------------------+\n   |                                                             |\n   |  +-------------------+-----------------+-----------------+  |\n   |  |   SSL Handshake   |   SSL Change    |    SSL Alert    |  |\n   |  |     Protocol      |   Cipher Spec   |    Protocol     |  |\n   |  +-------------------+-----------------+-----------------+  |\n   |  |                                                       |  |\n   |  |                 SSL RECORD PROTOCOL                   |  |\n   |  +-------------------------------------------------------+  |\n   |                                                             |\n   +-------------------------------------------------------------+\n   |  TRANSPORT LAYER (TCP - Transmission Control Protocol)      |\n   +-------------------------------------------------------------+\n   |  NETWORK LAYER (IP - Internet Protocol)                     |\n   +-------------------------------------------------------------+",
+      "ssl_connections_vs_sessions": [
+        "SSL Connection: A transient, peer-to-peer communications link. Every connection is associated with exactly one session.",
+        "SSL Session: An association between a client and server created by the Handshake protocol. Sessions define a set of cryptographic parameters (Master Secret, Server/Client Randoms, Cipher Spec) that can be shared across multiple consecutive connections to avoid expensive cryptographic renegotiations."
+      ],
+      "conclusion": "The dual-layer modular architecture of SSL decouples the complex state-negotiation logic (Handshake, Alert, Change Cipher Spec) from continuous high-speed data transmission (Record Protocol), providing an optimal balance of security and throughput."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Secret Diplomatic Tunnel under the Road",
+      "analogy_story": "Think of SSL like building a safe, private glass tunnel under a dangerous city street:",
+      "points": [
+        {
+          "feature": "1. Why do we need SSL?",
+          "meaning": "When you buy a toy on a website, you don't want spies reading your bank card number. SSL puts a padlock on your web browser."
+        },
+        {
+          "feature": "2. The Two Floors (Layers)",
+          "meaning": "UPPER FLOOR (The Diplomats): They meet first to agree on rules: 'We will use Secret Cipher #3, here is my ID card, and if anything goes wrong, ring this emergency bell (Alert)!' LOWER FLOOR (The Cargo Workers): They take your message, chop it into neat boxes, stamp each box with a wax seal (MAC), lock the boxes, and slide them across the tunnel."
+        },
+        {
+          "feature": "3. Change Cipher Spec",
+          "meaning": "A referee blowing a whistle: 'Ready... GO! Starting right now, everything we say must be encrypted!'"
+        }
+      ],
+      "takeaway": "SSL gives your browser the green padlock: it makes sure you are connected to the REAL website and locks your passwords from hackers!"
+    }
+  },
+  {
+    "id": "U5-Q2",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 2,
+    "question": "Explain SSL secure communication and its protocols.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "SSL Secure Communication",
+      "Record Protocol Steps",
+      "Handshake Protocol Phases",
+      "ClientHello",
+      "ServerHello",
+      "Pre-Master Secret",
+      "Master Secret",
+      "Alert Protocol",
+      "ChangeCipherSpec"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-11 to 5-13)",
+    "exam_answer": {
+      "introduction": "Secure communication in SSL is realized through the coordinated execution of four distinct internal protocols: SSL Record Protocol, SSL Handshake Protocol, SSL Change Cipher Spec Protocol, and SSL Alert Protocol. Together, they establish parameters, verify identity, exchange keys, and stream encrypted data.",
+      "the_four_handshake_phases": [
+        {
+          "phase": "Phase 1: Establish Security Capabilities",
+          "details": [
+            "Client sends 'ClientHello' containing: SSL Version, 32-byte ClientRandom, Session ID, and supported CipherSuites (e.g., TLS_RSA_WITH_AES_256_CBC_SHA).",
+            "Server responds with 'ServerHello' containing: Selected SSL Version, 32-byte ServerRandom, Session ID, and selected CipherSuite."
+          ]
+        },
+        {
+          "phase": "Phase 2: Server Authentication and Key Exchange",
+          "details": [
+            "Server sends 'Certificate' containing server's X.509 certificate chain.",
+            "Optionally sends 'ServerKeyExchange' (if RSA public key is missing or for Diffie-Hellman).",
+            "Optionally sends 'CertificateRequest' (if client mutual authentication is required).",
+            "Server signals completion by sending 'ServerHelloDone'."
+          ]
+        },
+        {
+          "phase": "Phase 3: Client Authentication and Key Exchange",
+          "details": [
+            "Client verifies server certificate against trusted Root CAs.",
+            "If requested, client sends 'Certificate' and 'CertificateVerify'.",
+            "Client sends 'ClientKeyExchange': Generates a 48-byte Pre-Master Secret, encrypts it with server's RSA public key, and sends it to the server.",
+            "Both client and server independently compute the 48-byte Master Secret: MasterSecret = PRF(PreMasterSecret, 'master secret', ClientRandom + ServerRandom)."
+          ]
+        },
+        {
+          "phase": "Phase 4: Finish and Switch Cipher Suite",
+          "details": [
+            "Client sends 'ChangeCipherSpec' (1 byte) signaling activation of negotiated encryption.",
+            "Client sends encrypted 'Finished' message to verify handshake integrity.",
+            "Server sends 'ChangeCipherSpec' and encrypted 'Finished' message.",
+            "Handshake is complete! Secure bidirectional application data flow begins."
+          ]
+        }
+      ],
+      "record_protocol_pipeline": [
+        "1. Fragmentation: Application data is broken into manageable blocks <= 16,384 bytes (16 KB).",
+        "2. Compression: Optional lossless compression (rarely used in modern stacks to mitigate CRIME attack).",
+        "3. HMAC Calculation: Computes keyed MAC over sequence number, record type, version, length, and payload.",
+        "4. Encryption: Encrypts fragmented payload + MAC using symmetric session key (AES-CBC or AES-GCM).",
+        "5. SSL Header Attachment: Prepends 5-byte header [Content Type (8 bits) || Major Version (8 bits) || Minor Version (8 bits) || Compressed Length (16 bits)]."
+      ],
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |                 SSL HANDSHAKE PROTOCOL TIMELINE             |\n   +-------------------------------------------------------------+\n     CLIENT                                                SERVER\n       |                                                     |\n       | ------------ (1) ClientHello ---------------------> |\n       | <----------- (2) ServerHello ---------------------- | Phase 1\n       | <----------- (3) Certificate ---------------------- | \n       | <----------- (4) ServerKeyExchange (opt) ---------- | Phase 2\n       | <----------- (5) ServerHelloDone ------------------ |\n       |                                                     |\n       | ------------ (6) ClientKeyExchange (PreMasterSec)-> |\n       | ------------ (7) ChangeCipherSpec ----------------> | Phase 3 & 4\n       | ------------ (8) Finished ------------------------> |\n       |                                                     |\n       | <----------- (9) ChangeCipherSpec ----------------- |\n       | <----------- (10) Finished ------------------------ |\n       |                                                     |\n       <======== SECURE APPLICATION DATA FLOW (HTTPS) =======>",
+      "conclusion": "By strictly segregating key exchange from bulk payload transmission, SSL ensures that computationally expensive asymmetric cryptography is performed only once during the handshake, allowing ultra-fast symmetric encryption for data streams."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Four-Step Handshake to Enter the Secret Clubhouse",
+      "analogy_story": "Imagine Alice knocking on Bob's secret clubhouse door:",
+      "points": [
+        {
+          "feature": "Phase 1: 'Hello! What languages do you speak?'",
+          "meaning": "Alice says: 'Hi! I speak English and French, here is a random lucky coin.' Bob says: 'Hi Alice! Let's speak English, and here is my lucky coin.'"
+        },
+        {
+          "feature": "Phase 2: 'Prove you own the clubhouse!'",
+          "meaning": "Bob holds up his official builder's certificate with a golden wax seal. Alice inspects the seal to make sure Bob isn't an imposter."
+        },
+        {
+          "feature": "Phase 3: 'The Secret Lock Code'",
+          "meaning": "Alice picks a secret code in her head, wraps it in Bob's special one-way lockbox, and throws it to Bob. Only Bob can unlock it with his private key. Now both have the secret code!"
+        },
+        {
+          "feature": "Phase 4: 'Let's start whispering!'",
+          "meaning": "Both say: 'Change to secret code NOW!' They whisper a test sentence. If both hear it correctly, the handshake is done and they can talk freely!"
+        }
+      ],
+      "takeaway": "The handshake takes less than 50 milliseconds in real life, making sure you are safe before you type even one letter of your password!"
+    }
+  },
+  {
+    "id": "U5-Q3",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 3,
+    "question": "Describe Transport Layer Security (TLS) and its working.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "TLS",
+      "Transport Layer Security",
+      "RFC 2246",
+      "RFC 5246",
+      "RFC 8446",
+      "TLS 1.2 vs TLS 1.3",
+      "Pseudorandom Function",
+      "PRF",
+      "HMAC",
+      "0-RTT Resumption",
+      "Forward Secrecy"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-4 to 5-6, 5-14)",
+    "exam_answer": {
+      "introduction": "Transport Layer Security (TLS) is the standardized successor to Netscape's SSL protocol, governed by the Internet Engineering Task Force (IETF). First specified in RFC 2246 (TLS 1.0, based on SSL 3.0), TLS has evolved through TLS 1.1, TLS 1.2 (RFC 5246), and modern TLS 1.3 (RFC 8446), delivering robust privacy and data integrity between two communicating computer applications.",
+      "evolution_and_differences_from_ssl": [
+        "Protocol Version Codes: SSL 3.0 is identified as version 3.0; TLS 1.0 is technically protocol 3.1, TLS 1.2 is 3.3, and TLS 1.3 is 3.4.",
+        "Pseudorandom Function (PRF): TLS replaces SSL's ad-hoc MD5/SHA-1 concatenation with a mathematically standardized PRF based on HMAC-SHA-256.",
+        "MAC Construction: TLS mandates standard HMAC (RFC 2104), whereas SSL 3.0 utilized an earlier, customized MAC construction.",
+        "Alert Codes: TLS expands cryptographic alert messages and makes specific closure alerts mandatory to prevent truncation attacks.",
+        "Cipher Suite Upgrades: Deprecated obsolete ciphers (RC4, DES, 3DES, static RSA key exchange); mandates Perfect Forward Secrecy (PFS) via ECDHE."
+      ],
+      "working_of_modern_tls": {
+        "tls12_vs_tls13_handshake": [
+          "TLS 1.2 Handshake (2-RTT): Requires two complete network round-trip times (RTT) before application data can be transmitted.",
+          "TLS 1.3 Handshake (1-RTT): Modern TLS 1.3 eliminates the separate key-exchange messages. The client guesses the server's key exchange algorithm and immediately sends its Diffie-Hellman public share in the initial ClientHello. The server responds with ServerHello + its own DH share, establishing keys in just ONE round trip (1-RTT).",
+          "0-RTT Early Data: In TLS 1.3, clients reconnecting to previously visited servers can transmit encrypted application data in the very first packet (0-RTT)."
+        ],
+        "security_hardening_in_tls13": [
+          "Static RSA handshake completely removed (guaranteeing Perfect Forward Secrecy).",
+          "Vulnerable CBC-mode ciphers removed, mandating Authenticated Encryption with Associated Data (AEAD) algorithms like AES-GCM and ChaCha20-Poly1305.",
+          "All handshake messages after ServerHello are encrypted."
+        ]
+      },
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |               TLS 1.2 (2-RTT) VS. TLS 1.3 (1-RTT)           |\n   +-------------------------------------------------------------+\n   TLS 1.2 HANDSHAKE (2 Round Trips):\n   Client                                             Server\n     | --- ClientHello --------------------------------> |\n     | <--- ServerHello, Certificate, ServerKeyEx ------ | (RTT 1)\n     | --- ClientKeyEx, ChangeCipherSpec, Finished ----> |\n     | <--- ChangeCipherSpec, Finished ----------------- | (RTT 2)\n     | <======== Application Data (HTTPS) =============> |\n\n   TLS 1.3 HANDSHAKE (1 Round Trip - High Speed):\n   Client                                             Server\n     | --- ClientHello + KeyShare (ECDH) --------------> |\n     | <--- ServerHello + KeyShare, Cert, Finished ----- | (RTT 1)\n     | --- Finished -----------------------------------> |\n     | <======== Application Data (HTTPS) =============> |",
+      "tls_record_protocol_working": [
+        "1. Splits outgoing data stream into discrete fragments (up to 2^14 bytes).",
+        "2. Applies AEAD authenticated encryption using keys derived from the master secret.",
+        "3. Transmits the protected ciphertext block over reliable TCP byte stream."
+      ],
+      "conclusion": "TLS represents the cryptographic backbone of modern digital civilization, securing billions of web transactions, cloud APIs, microservice meshes, mobile applications, and IoT communications every second."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Super-Fast Express Delivery Pass",
+      "analogy_story": "Think of TLS as the new, updated, super-fast version of SSL:",
+      "points": [
+        {
+          "feature": "1. What is the difference between SSL and TLS?",
+          "meaning": "SSL is like the old iPhone 1, and TLS is like the brand-new iPhone 15! Everyone still informally says 'SSL', but under the hood, everyone uses TLS."
+        },
+        {
+          "feature": "2. Why is TLS 1.3 so much faster? (1-RTT)",
+          "meaning": "In old SSL, you had to knock, wait for an answer, ask a question, wait for an answer, and finally exchange keys (took 2 whole round trips!). In TLS 1.3, you throw your key share in the very first hello, cutting the waiting time in half!"
+        },
+        {
+          "feature": "3. Forward Secrecy (Zero Regrets)",
+          "meaning": "Even if an evil hacker steals a server's master key 10 years from now, they still CANNOT decrypt the past recordings of your messages because every single session used a unique disposable key!"
+        }
+      ],
+      "takeaway": "TLS is faster, safer, and completely fixes the old security flaws of SSL, making internet browsing lightning-fast and private."
+    }
+  },
+  {
+    "id": "U5-Q4",
+    "unit": "UNIT V",
+    "unit_title": "WEB SECURITY",
+    "question_number": 4,
+    "question": "Explain Secure Electronic Transaction (SET), its entities and processing.",
+    "marks": "13 / 16 Marks",
+    "type": "Big Question",
+    "keywords": [
+      "SET",
+      "Secure Electronic Transaction",
+      "MasterCard & Visa",
+      "Cardholder",
+      "Merchant",
+      "Payment Gateway",
+      "Issuer",
+      "Acquirer",
+      "Dual Signature",
+      "Purchase Order",
+      "Payment Information",
+      "POMD",
+      "PIMD"
+    ],
+    "syllabus_ref": "Chapter 5 (Pages 5-14 to 5-21)",
+    "exam_answer": {
+      "introduction": "Secure Electronic Transaction (SET) is an open cryptographic standard developed jointly by Visa, MasterCard, Netscape, and Microsoft in 1996 to facilitate safe, fraud-resistant credit card payments over the Internet. Unlike SSL/TLS which merely encrypts the transmission pipe between customer and merchant, SET provides end-to-end transaction integrity, privacy partitioning, and bank authorization.",
+      "key_business_objectives": [
+        "Privacy of Payment Information: The merchant NEVER sees the cardholder's credit card number or CVV.",
+        "Privacy of Order Details: The bank / payment gateway NEVER sees what specific items the cardholder is buying.",
+        "Cardholder Verification: Confirms the buyer is a legitimate holder of an active credit card account.",
+        "Merchant Verification: Confirms the merchant accepts payment through an authorized financial institution."
+      ],
+      "set_participating_entities": [
+        {
+          "entity": "1. Cardholder (Customer)",
+          "role": "Authorized credit card holder using an electronic wallet application on their PC/device to initiate purchases."
+        },
+        {
+          "entity": "2. Merchant",
+          "role": "Online retailer / vendor offering goods and services, operating a digital storefront."
+        },
+        {
+          "entity": "3. Payment Gateway",
+          "role": "Financial processor operated by the acquirer that bridges the public Internet and the secure, private interbank clearing network."
+        },
+        {
+          "entity": "4. Issuer (Cardholder's Bank)",
+          "role": "Financial institution that issued the payment card to the cardholder and maintains the customer's line of credit."
+        },
+        {
+          "entity": "5. Acquirer (Merchant's Bank)",
+          "role": "Financial institution that establishes the merchant's merchant account and receives settlement funds."
+        },
+        {
+          "entity": "6. Certificate Authority (CA)",
+          "role": "Trusted PKI hierarchy issuing X.509 certificates to Cardholders, Merchants, and Payment Gateways."
+        }
+      ],
+      "dual_signature_concept": {
+        "purpose": "A landmark cryptographic innovation in SET that binds two separate messages (Order Information [OI] and Payment Information [PI]) intended for two separate recipients (Merchant and Bank), without disclosing either message to the other party.",
+        "generation_steps": [
+          "1. Cardholder computes Order Information Message Digest: POMD = H(OI).",
+          "2. Cardholder computes Payment Information Message Digest: PIMD = H(PI).",
+          "3. Cardholder concatenates both digests and hashes again: Dual Digest = H(POMD || PIMD).",
+          "4. Cardholder encrypts Dual Digest with private signing key PRc to form the Dual Signature: DS = E(PRc, Dual Digest).",
+          "5. Cardholder transmits [OI, PIMD, DS] to Merchant, and transmits [PI, POMD, DS] (encrypted with Gateway's public key) to Payment Gateway via Merchant."
+        ],
+        "verification": [
+          "Merchant verifies: Computes H(OI) = POMD, concatenates with received PIMD, hashes, and compares with decrypted DS using Cardholder's public key.",
+          "Gateway verifies: Computes H(PI) = PIMD, concatenates with received POMD, hashes, and compares with decrypted DS using Cardholder's public key."
+        ]
+      },
+      "ascii_diagram": "   +-------------------------------------------------------------+\n   |                  SET DUAL SIGNATURE ARCHITECTURE            |\n   +-------------------------------------------------------------+\n     Order Info (OI)                      Payment Info (PI)\n       |                                      |\n       v                                      v\n   [ Hash H ]                             [ Hash H ]\n       |                                      |\n       v                                      v\n     [POMD]                                 [PIMD]\n       |                                      |\n       +-------------------+------------------+\n                           |\n                           v\n                   [ POMD || PIMD ]\n                           |\n                           v\n                      [ Hash H ]\n                           |\n                           v\n                 [ Encrypt w/ PRc ]\n                           |\n                           v\n                  [ DUAL SIGNATURE ]\n             (Binds both without leaking!)",
+      "set_transaction_processing_phases": [
+        "1. Purchase Request: Cardholder receives merchant invoice, generates Dual Signature, and submits purchase request.",
+        "2. Payment Authorization: Merchant forwards encrypted payment information (PI) and Dual Signature to the Payment Gateway. The Gateway requests authorization from the card issuer over the private banking network.",
+        "3. Payment Capture: Upon fulfilling order shipment, merchant requests settlement funds via Payment Gateway from the acquirer bank."
+      ],
+      "conclusion": "While SET was historically considered computationally heavyweight for consumer desktop browsers (paving the way for 3D-Secure in web payments), its Dual Signature architecture remains one of the most elegant multi-party cryptographic protocols in electronic commerce."
+    },
+    "simple_explanation": {
+      "analogy_title": "The Pizza Order with the Two-Envelope Sealed Letter",
+      "analogy_story": "Imagine ordering pizza online, but you don't want the pizza delivery boy to see your bank PIN, and you don't want the bank manager to know you bought 5 extra large cheese pizzas:",
+      "points": [
+        {
+          "feature": "1. The Privacy Problem in Normal Shopping",
+          "meaning": "If you give your credit card number to a website, an employee could steal it. SET fixes this completely!"
+        },
+        {
+          "feature": "2. The Magic Dual Signature",
+          "meaning": "You write two slips of paper: Slip A: 'I want 2 large pepperoni pizzas' (Sent to Pizza Store). Slip B: 'Charge $20 to card #4321' (Sent to Bank). You staple both slips together with a special wax stamp that locks them together without letting the pizza store read Slip B, and without letting the bank read Slip A!"
+        },
+        {
+          "feature": "3. The Result",
+          "meaning": "The Pizza store gets their pizza order and knows the bank will pay them. The Bank pays the $20 and knows you authorized it. Nobody's privacy is violated!"
+        }
+      ],
+      "takeaway": "SET separates shopping cart items from your bank card numbers so stores can never steal your credit card!"
+    }
+  }
+]
